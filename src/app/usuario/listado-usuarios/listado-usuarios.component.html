@@ -1,0 +1,39 @@
+<div class="body">
+  <div class="row">
+    <h4>Bienvenido {{activeUser.nombre}}</h4>
+    <h6>Rol: {{activeUser.rol}}</h6>
+    <div class="col col-4">
+      <div class="card" style="width: 100%;">
+        <table class="table" border="1">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr *ngFor="let usuario of usuarios">
+              <td>{{usuario.nombre}}</td>
+              <td>{{usuario.apellido}}</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="usuarioEditar(usuario.id)"><i class="bi bi-pencil"></i></button>
+              </td>
+            </tr> -->
+
+            <tr >
+              <td>Richard</td>
+              <td>Acevedo</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="usuarioEditar(1)"><i class="bi bi-pencil">Editar Usuario</i></button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+        </div>
+    <div class="col col-8">
+    </div>
+  </div>
+</div>

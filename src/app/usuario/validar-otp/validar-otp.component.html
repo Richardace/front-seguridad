@@ -1,0 +1,26 @@
+<div class="container align-items-center">
+  <div class="row align-items-center">
+    <div class="col-xs-10 col-lg-5 container">
+      <div class="row">
+
+        <div class="my-2 row">
+          <h1 class="text-center">Validación de Seguridad</h1>
+        </div>
+        <br>
+        <div class="my-2 row">
+          <h6 class="text-center">Hemos enviado un codigo de verificación a tu celular registrado. Por favor Ingresalo para iniciar sesión</h6>
+        </div>
+        <div class="mb-3 row">
+          <label for="staticEmail" class="col-lg-3 col-form-label">Codigo</label>
+          <div class="col-lg-9  ">
+            <input #codigo type="text" class="form-control" placeholder="codigo">
+          </div>
+        </div>
+        <div class="col-12 text-center mt-3">
+          <button (click)="validarOTP(codigo.value)" type="button"
+            class="btn btn-info col-8">Ingresar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,7 +20,7 @@ export class ValidarOtpComponent {
 
     ngOnInit() {
       let telefono: any = sessionStorage.getItem('telefono');
-      // this.usuarioService.enviarOTP(telefono)
+      this.usuarioService.enviarOTP(telefono)
       // .subscribe(res => {
 
       // },

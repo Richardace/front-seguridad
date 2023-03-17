@@ -25,9 +25,6 @@ export class EditarPermisosComponent {
   ) { }
 
   ngOnInit() {
-
-
-
     const usuarioId = parseInt(this.router.snapshot.params['id']);
     this.usuarioService.darUsuario(Number(usuarioId)).subscribe((usuario) => {
       this.persona = usuario;

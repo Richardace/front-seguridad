@@ -1,0 +1,8 @@
+
+{
+  "/prod": {
+    "target": " https://3nebg3xoyg.execute-api.us-east-1.amazonaws.com",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

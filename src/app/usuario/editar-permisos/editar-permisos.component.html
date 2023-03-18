@@ -18,8 +18,6 @@
     </div>
 
     <!--Contraseña -->
-
-
       <!--Rol-->
       <div class="form-group mx-sm-3 mb-2">
         <label for="user">Rol Usuario</label>
@@ -31,8 +29,6 @@
           placeholder="rol"
         />
       </div>
-
-
       <div class="form-group mx-sm-3 mb-2" *ngIf="mostrarContrasena">
         <label for="user">Por favor valida la contraseña</label>
         <input
@@ -41,10 +37,8 @@
           class="form-control"
           formControlName="user"
           placeholder="Ingrese su contraseña"
-
         />
         </div>
-
   <button type="button" class="btn btn-primary" (click)="mostrarFormularioContrasena()">Actualizar</button>
   &nbsp;
 </form>

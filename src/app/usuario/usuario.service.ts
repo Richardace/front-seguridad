@@ -9,7 +9,7 @@ import { Usuario } from './usuario';
 })
 export class UsuarioService {
 
-  private apiUrl = "endpoint";
+  private apiUrl = "https://3nebg3xoyg.execute-api.us-east-1.amazonaws.com/prod";
 
   constructor(private http: HttpClient) { }
 
@@ -37,9 +37,10 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(`${this.apiUrl}/usuarios`)
   }
 
-  login(usuario: string, contrasena: string): any {
-    return true;
+  login(usuario: string, contrasena: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { "usuario": usuario, "contrasena": contrasena });
   }
+
 
   enviarOTP(telefono: string): any{
     return true;

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Usuario } from '../usuario';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,23 +31,23 @@ export class LoginComponent {
   loginUsuario(usuario: string, contrasena: string) {
    this.error = ""
 
-     this.usuarioService.login(usuario, contrasena)
-     .subscribe(res => {
+    this.usuarioService.login(usuario, contrasena)
+     .subscribe((res: any) => {
          sessionStorage.setItem('idUsuario', res.id);
          sessionStorage.setItem('rol', res.rol);
-         var user = new Usuario(res.id, res.nombre, res.apellido, res.password, res.correo, res.rol, res.telefono );
+         var user = new Usuario(res.id, res.nombre, res.apellido,res.password, res.usuario, res.rol, res.telefono);
          var userJSON = user.toJSON();
          sessionStorage.setItem('activeUser', userJSON)
          this.toastrService.success("Login ok", "Información", {closeButton: true});
          if(user.rol == 1) {
            this.router.navigate([`/otp`])
          }
-       })
+        })
    }
 
-    loginUsuarioI(usuario: string, contrasena: string) {
-    this.toastrService.error("Usuario o contraseña incorrectos", "", {closeButton: true});
-    this.router.navigate([`/otp`])
-  }
+   //loginUsuarioI(usuario: string, contrasena: string) {
+  //  this.toastrService.error("Usuario o contraseña incorrectos", "", {closeButton: true});
+  //  this.router.navigate([`/otp`])
+  //}
 
 }

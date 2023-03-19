@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Usuario } from './usuario';
 
@@ -49,6 +49,20 @@ export class UsuarioService {
 
   validarOTP(otp: string, email: string): Observable<any>{
     return this.http.post<any>(`/prod/verify`, { "email": email, "otp": otp });
+  }
+
+  enviarOTPUpdate(usuario: string, rol: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `${sessionStorage.getItem('token')}`
+    })
+    return this.http.post<any>(`/prod/updateRole`, { "userEmail": usuario, "newRole": rol }, { headers: headers });
+  }
+
+  enviarOTPUpdatevalidado(usuario: string, rol: string, otp: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `${sessionStorage.getItem('token')}`
+    })
+    return this.http.post<any>(`/prod/updateRole`, { "userEmail": usuario, "newRole": rol, "otp": otp }, { headers: headers });
   }
 
 

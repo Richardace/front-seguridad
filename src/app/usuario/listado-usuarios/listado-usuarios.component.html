@@ -1,7 +1,5 @@
 <div class="body">
   <div class="row">
-    <h4>Bienvenido {{activeUser.nombre}}</h4>
-    <h6>Rol: {{activeUser.rol}}</h6>
     <div class="col col-4">
       <div class="" style="width: 100%;">
         <table class="table" border="1">
@@ -19,7 +17,7 @@
               <td>{{usuario.name}}</td>
               <td>{{usuario.lastname}}</td>
               <td>
-                <button type="button" class="btn btn-primary" (click)="usuarioEditar(usuario.email)">Editar Permiso</button>
+                <button type="button" class="btn btn-primary" (click)="usuarioEditar(usuario.email, usuario.rol)">Editar Permisos</button>
               </td>
             </tr>
 <!--
@@ -35,7 +33,5 @@
         </table>
       </div>
         </div>
-    <div class="col col-8">
-    </div>
   </div>
 </div>

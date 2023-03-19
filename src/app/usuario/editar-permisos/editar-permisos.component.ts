@@ -13,8 +13,10 @@ import { UsuarioService } from '../usuario.service';
 export class EditarPermisosComponent {
 
   persona!: Usuario
-  personaForm!: FormGroup;
   mostrarContrasena: boolean = false;
+  correoUsuario: string = "";
+  rolUsuario: string = "";
+  botonInicial: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,42 +27,35 @@ export class EditarPermisosComponent {
   ) { }
 
   ngOnInit() {
-    const usuarioId = parseInt(this.router.snapshot.params['id']);
-    this.usuarioService.darUsuario(Number(usuarioId)).subscribe((usuario) => {
-      this.persona = usuario;
-      this.personaForm = this.formBuilder.group({
-        id: [this.persona.id, []],
-        password: ["", [Validators.required, Validators.minLength(2)]],
-        rol: [Number(this.persona.rol), Validators.required],
-      });
-    });
+    this.correoUsuario = this.router.snapshot.params['id'];
+    this.rolUsuario = this.router.snapshot.params['rol'];
   }
 
   mostrarFormularioContrasena(){
     this.mostrarContrasena = true;
   }
 
-  editarUsuario(persona: Usuario): void {
-    this.usuarioService.editarUsuario(persona).subscribe((usuario) => {
-      this.toastr.success("Confirmation", "Persona editada")
-      this.personaForm.reset();
-      this.routerPath.navigate(['/perfil']);
-    },
-    error => {
-      if (error.statusText === "UNAUTHORIZED") {
-        this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
-      }
-      else if (error.statusText === "UNPROCESSABLE ENTITY") {
-        this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
-      }
-      else if (error.error === "EXISTENT_USER") {
-        this.toastr.error("Error","Este usuario ya existe")
-      }
-      else {
-        this.toastr.error("Error","Ha ocurrido un error. " + error.message)
-      }
+
+  solicitarOTPInicio(rol:string):void{
+    var email:string = sessionStorage.getItem('email')!;
+    this.usuarioService.enviarOTPUpdate(email, rol)
+    .subscribe((res: any) => {
+      this.botonInicial = false;
+        this.mostrarFormularioContrasena();
+       })
+  }
+
+  solicitarOTP(rol:string, otp:string):void{
+    var email:string = sessionStorage.getItem('email')!;
+    this.usuarioService.enviarOTPUpdatevalidado(email, rol, otp)
+    .subscribe((res: any) => {
+      this.toastr.success("Rol Actualizado Correctamente", "Información", {closeButton: true});
+      this.routerPath.navigate([`/listado-usuarios`])
+    }, (err:any) => {
+      this.toastr.error("Codigo OTP Invalido", "", {closeButton: true});
     })
   }
 
+  // this.routerPath.navigate([`/listado-usuarios`])
 
 }

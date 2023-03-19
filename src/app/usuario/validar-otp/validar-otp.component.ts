@@ -28,11 +28,7 @@ export class ValidarOtpComponent {
       this.usuarioService.validarOTP(otp, email)
         .subscribe((res) => {
           this.toastrService.success("Login ok", "Información", {closeButton: true});
-          if(res == true) {
-            this.router.navigate([`/listado-usuarios`])
-          }else{
-              this.toastrService.error("Codigo OTP Incorrecto", "", {closeButton: true});
-            }
+          this.router.navigate([`/listado-usuarios`])
         },
           (error) => {
             this.toastrService.error("Codigo OTP Invalido", "", {closeButton: true});

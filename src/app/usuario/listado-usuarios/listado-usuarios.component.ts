@@ -22,16 +22,14 @@ export class ListadoUsuariosComponent {
    }
 
   ngOnInit() {
-    var jsonUser: any = sessionStorage.getItem('activeUser');
-    this.activeUser = Usuario.fromJSON(jsonUser);
     this.usuarioService.darUsuarios().subscribe((usuarios) => {
       console.log(usuarios)
       this.usuarios=usuarios;
     })
   }
 
-  usuarioEditar(usuarioId: any){
-    this.router.navigate(['/usuario/editar/' + usuarioId]);
+  usuarioEditar(usuarioId: any, rol: any){
+    this.router.navigate(['/usuario/editar/' + usuarioId + '/' + rol]);
   }
 
 }

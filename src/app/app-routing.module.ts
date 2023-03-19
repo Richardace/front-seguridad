@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'otp', component: ValidarOtpComponent, pathMatch: 'full' },
   { path: 'listado-usuarios', component: ListadoUsuariosComponent, pathMatch: 'full' },
-  { path: 'usuario/editar/:id', component: EditarPermisosComponent,  pathMatch: 'full' },
+  { path: 'usuario/editar/:id/:rol', component: EditarPermisosComponent,  pathMatch: 'full' },
   // { path: 'usuario/crear', component: CrearComponent, pathMatch: 'full' },
 ];
 

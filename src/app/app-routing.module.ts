@@ -4,12 +4,14 @@ import { EditarPermisosComponent } from './usuario/editar-permisos/editar-permis
 import { ListadoUsuariosComponent } from './usuario/listado-usuarios/listado-usuarios.component';
 import { LoginComponent } from './usuario/login/login.component';
 import { ValidarOtpComponent } from './usuario/validar-otp/validar-otp.component';
+import { CrearComponent } from './usuario/crear/crear.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'otp', component: ValidarOtpComponent, pathMatch: 'full' },
   { path: 'listado-usuarios', component: ListadoUsuariosComponent, pathMatch: 'full' },
   { path: 'usuario/editar/:id', component: EditarPermisosComponent,  pathMatch: 'full' },
+  { path: 'usuario/crear', component: CrearComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

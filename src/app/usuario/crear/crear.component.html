@@ -1,0 +1,182 @@
+<p>
+  crear usario!
+</p>
+
+
+
+<form
+ [formGroup]="usuarioForm"
+ (ngSubmit)="!usuarioForm.invalid && crearUsuario(usuarioForm.value)"
+>
+  <div class="row">
+    <div class="col col-6">
+      <!--Nombre-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre">Nombre</label>
+        <input
+          novalidate
+          id="nombre"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Nombre"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('nombre')!.hasError('required') &&
+            personaForm.get('nombre')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="personaForm.get('nombre')!.hasError('minlength')"
+        >
+          El contenido es muy corto, debe tener al menos dos caracteres.
+        </div>
+      </div>
+
+      <!--Apellido-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="apellido">Apellido</label>
+        <input
+          novalidate
+          id="apellido"
+          class="form-control"
+          formControlName="apellido"
+          placeholder="Apellido"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('nombre')!.hasError('required') &&
+            personaForm.get('nombre')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="personaForm.get('nombre')!.hasError('minlength')"
+        >
+          El contenido es muy corto, debe tener al menos dos caracteres.
+        </div>
+      </div>
+
+      <!--usuario-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="descripcion">usuario</label>
+        <input
+          novalidate
+          id="usuario"
+          class="form-control"
+          formControlName="usuario"
+          placeholder="usuario"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('usuario')!.hasError('required') &&
+            personaForm.get('usuario')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Talla-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="talla">password</label>
+        <input
+          novalidate
+          id="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="password"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('password')!.hasError('required') &&
+            personaForm.get('password')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Rol-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="peso">Rol</label>
+        <input
+          novalidate
+          id="rol"
+          class="form-control"
+          formControlName="rol"
+          placeholder="Rol"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('rol')!.hasError('required') &&
+            personaForm.get('rol')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Telefono-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="telefono">Telefono</label>
+        <input
+          novalidate
+          id="telefono"
+          type="number"
+          class="form-control"
+          formControlName="telefono"
+          placeholder="Telefono"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('telefono')!.hasError('required') &&
+            personaForm.get('telefono')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+      <!--Pecho-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="pecho">Pecho en cm</label>
+        <input
+          novalidate
+          id="pecho"
+          type="number"
+          class="form-control"
+          formControlName="pecho"
+          placeholder="Pecho"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            personaForm.get('pecho')!.hasError('required') &&
+            personaForm.get('pecho')!.touched
+          "
+        >
+          Por favor diligencie este campo
+        </div>
+      </div>
+
+
+
+      </div>
+    </div>
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.valid">Crear</button>
+
+</form>

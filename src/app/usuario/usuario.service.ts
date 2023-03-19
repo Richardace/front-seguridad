@@ -38,9 +38,14 @@ export class UsuarioService {
   }
 
   login(usuario: string, contrasena: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { "usuario": usuario, "contrasena": contrasena });
+    return this.http.post<any>(`/prod/login`, { "email": usuario, "password": contrasena });
   }
 
+  crearUsuario(usuario: Usuario): Observable<Usuario> {
+    const idUsuario = sessionStorage.getItem('idUsuario');
+
+    return this.http.post<any>(`/prod/login`, usuario)
+  }
 
   enviarOTP(telefono: string): any{
     return true;

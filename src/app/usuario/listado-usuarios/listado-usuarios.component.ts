@@ -12,7 +12,7 @@ import { UsuarioService } from '../usuario.service';
 export class ListadoUsuariosComponent {
 
   activeUser!: Usuario;
-  usuarios: Array<Usuario>=[]
+  usuarios: Array<any>=[]
 
   constructor(
     private router: Router,
@@ -25,6 +25,7 @@ export class ListadoUsuariosComponent {
     var jsonUser: any = sessionStorage.getItem('activeUser');
     this.activeUser = Usuario.fromJSON(jsonUser);
     this.usuarioService.darUsuarios().subscribe((usuarios) => {
+      console.log(usuarios)
       this.usuarios=usuarios;
     })
   }

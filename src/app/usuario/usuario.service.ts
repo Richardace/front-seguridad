@@ -33,8 +33,8 @@ export class UsuarioService {
     return this.http.put<Usuario>(`${this.apiUrl}/perfil/${persona.id}`, persona)
   }
 
-  darUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.apiUrl}/usuarios`)
+  darUsuarios(): Observable<any[]> {
+    return this.http.get<any[]>('prod/users')
   }
 
   login(usuario: string, contrasena: string): Observable<any> {
@@ -47,12 +47,8 @@ export class UsuarioService {
     return this.http.post<any>(`/prod/login`, usuario)
   }
 
-  enviarOTP(telefono: string): any{
-    return true;
-  }
-
-  validarOTP(otp: string, usuario: string): any{
-    return true;
+  validarOTP(otp: string, email: string): Observable<any>{
+    return this.http.post<any>(`/prod/verify`, { "email": email, "otp": otp });
   }
 
 

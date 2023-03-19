@@ -19,39 +19,23 @@ export class ValidarOtpComponent {
 
 
     ngOnInit() {
-      let telefono: any = sessionStorage.getItem('telefono');
-      this.usuarioService.enviarOTP(telefono)
-      // .subscribe(res => {
-
-      // },
-      // error => {
-      //   this.toastrService.error("Usuario o contraseña incorrectos", "", {closeButton: true});
-      // })
 
     }
 
 
-   // validarOTP(otp: string) {
-  //   this.error = ""
-        // let usuario = sessionStorage.getItem('usuario');
-  //   this.usuarioService.enviarOTP(otp, usuario)
-  //     .subscribe(res => {
-  //       this.toastrService.success("Login ok", "Información", {closeButton: true});
-  //       if(res == true) {
-  //         this.router.navigate([`/listadoUsuarios`])
-  //       }else{
-          //   this.toastrService.error("Codigo OTP Incorrecto", "", {closeButton: true});
-          // }
-  //     },
-  //       error => {
-  //         this.error = "Usuario o contraseña incorrectos";
-  //       })
-  // }
-
-  validarOTP(otp: string) {
-    this.error = ""
-
-    this.router.navigate([`/listado-usuarios`])
-  }
-
+   validarOTP(otp: string) {
+      var email:string = sessionStorage.getItem('email')!;
+      this.usuarioService.validarOTP(otp, email)
+        .subscribe((res) => {
+          this.toastrService.success("Login ok", "Información", {closeButton: true});
+          if(res == true) {
+            this.router.navigate([`/listado-usuarios`])
+          }else{
+              this.toastrService.error("Codigo OTP Incorrecto", "", {closeButton: true});
+            }
+        },
+          (error) => {
+            this.toastrService.error("Codigo OTP Invalido", "", {closeButton: true});
+          })
+    }
 }
